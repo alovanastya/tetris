@@ -6,41 +6,40 @@ using System.Threading.Tasks;
 
 namespace ConsoleTetris
 {
-    struct SquareOnTheField // это один квадратик поля, их 200
+    class Block
     {
-        public SquareOnTheField(int i, int j)
+        Block(int i, int j)
         {
             this.i = i;
             this.j = j;
         }
 
-        public int i;
-        public int j;
-    }
-
-    class Block
-    {
+        Block() { }
 
         int blockType;
 
-        List<SquareOnTheField> coordinates;
-        public List<SquareOnTheField> moveToRight() 
+        public int i = 0;
+        public int j = 0;
+
+        public bool[,] blockMatrix = new bool[4, 4];
+
+        public void moveToRight() 
         {
-            return null; // нул по приколу пока
+            j++;
         }
-        public List<SquareOnTheField> moveToLeft()
+        public void moveToLeft()
         {
-            return null; // нул по приколу пока
+            j--;
         }
 
-        public List<SquareOnTheField> moveDown()
+        public void moveDown()
         {
-            return null; // нул по приколу пока
+            i++;
         }
 
-        public List<SquareOnTheField> rotate()
+        public void rotate()
         {
-            return null; // нул по приколу пока
+            
         }
     }
 }

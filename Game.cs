@@ -6,8 +6,28 @@ using System.Threading.Tasks;
 
 namespace ConsoleTetris
 {
-    internal class Game // internal может поредачить?
+    class Game
     {
-        // бе бе бе 
+        State currentState;
+
+        public void startGame()
+        {
+
+        }
+
+        public bool moveToRight()
+        {
+            return true;
+        }
+
+        public bool moveToLeft()
+        {
+            return true;
+        }
+
+        public bool rotate()
+        {
+            return true;
+        }
     }
 }

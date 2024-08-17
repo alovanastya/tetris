@@ -8,9 +8,20 @@ namespace ConsoleTetris
 {
     class State
     {
+        Block nextBlock;
         Block activeBlock;
 
         int[,] gameBoard = new int[20, 10];
+
+        private void generateNextBlokc()
+        {
+
+        }
+
+        public void endMove() //выполняется после каждого завершения хода
+        {
+            
+        }
 
         public State() 
         { 
