@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleTetris
 {
-    class Block
+   public class Block
     {
         Block(int i, int j)
         {
@@ -14,14 +14,14 @@ namespace ConsoleTetris
             this.j = j;
         }
 
-        Block() { }
+        public Block() { }
 
-        int blockType;
+        public int blockType;
 
         public int i = 0;
         public int j = 0;
 
-        public bool[,] blockMatrix = new bool[4, 4];
+        public int[,] blockMatrix = new int[4, 4];
 
         public void moveToRight() 
         {
@@ -39,7 +39,7 @@ namespace ConsoleTetris
 
         public void rotate()
         {
-            
+ 
         }
     }
 }
