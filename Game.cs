@@ -14,50 +14,89 @@ namespace ConsoleTetris
 
         public void StartGame()
         {
-            _timer = new Timer(1000); // интервал в 1 секунду
+            _timer = new Timer(500);
             _timer.Elapsed += (sender, e) => MoveToDown();
             _timer.AutoReset = true;
             _timer.Enabled = true;
         }
 
-        public bool isPossibleMove(Block block)
+        public bool IsPossibleBlock(Block block)
         {
-
-
-            return false;
+            return true;
         }
 
         public void MoveToRight()
         {
-           
+            CurrentState.DeleteActiveBlock();
+            Block block = CurrentState.ActiveBlock.Clone();
+            block.MoveToRight();
+            if (IsPossibleBlock(block))
+            {
+                CurrentState.ActiveBlock = block;
+            }
+            CurrentState.AddActiveBlock();
+            Print();
         }
 
         public void MoveToLeft()
         {
-            
+            CurrentState.DeleteActiveBlock();
+            Block block = CurrentState.ActiveBlock.Clone();
+            block.MoveToLeft();
+            if (IsPossibleBlock(block))
+            {
+                CurrentState.ActiveBlock = block;
+            }
+            CurrentState.AddActiveBlock();
+            Print();
         }
 
         public void MoveToDown()
         {
+            CurrentState.DeleteActiveBlock();
+            Block block = CurrentState.ActiveBlock.Clone();
+            block.MoveDown();
+            if (IsPossibleBlock(block))
+            {
+                CurrentState.ActiveBlock = block;
+            }
+            CurrentState.AddActiveBlock();
             Print();
         }
 
         public void Rotate()
         {
-            
+            CurrentState.DeleteActiveBlock();
+            Block block = CurrentState.ActiveBlock.Clone();
+            block.Rotate();
+            if (IsPossibleBlock(block))
+            {
+                CurrentState.ActiveBlock = block;
+            }
+            CurrentState.AddActiveBlock();
+            Print();
         }
 
-        public void Print() //напечатать игровое поле
+        public void Print()
         {
-            Console.Clear();
+            int indent = 4; // Количество пробелов для отступа
 
-            for(int i = 0; i < State.M; i++)
+            // Сохраняем текущую позицию курсора
+            int cursorTop = Console.CursorTop;
+
+            // Устанавливаем курсор в начало
+            Console.SetCursorPosition(0, 0);
+
+            for (int i = 0; i < State.M; i++)
             {
-                for(int j = 0; j < State.N; j++)
+                // Устанавливаем курсор на нужную позицию с отступом
+                Console.SetCursorPosition(indent, i);
+
+                for (int j = 0; j < State.N; j++)
                 {
-                    if(CurrentState.GameBoard[i, j] == 0)
+                    if (CurrentState.GameBoard[i, j] == 0)
                     {
-                        Console.Write(0);
+                        Console.Write(".");
                     }
                     else
                     {
@@ -65,8 +104,12 @@ namespace ConsoleTetris
                     }
                     Console.Write(" ");
                 }
-                Console.WriteLine();
             }
+
+            // Устанавливаем курсор обратно в исходное положение
+            Console.SetCursorPosition(0, cursorTop);
         }
+
+
     }
 }

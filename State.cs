@@ -12,7 +12,7 @@ namespace ConsoleTetris
         public const int N = 10;
 
         public Block NextBlock;
-        public Block AtiveBlock;
+        public Block ActiveBlock;
 
         public int[,] GameBoard = new int[M, N];
 
@@ -25,22 +25,22 @@ namespace ConsoleTetris
             switch (BlockTypeIndex)
             {
                 case 1:
-                    return new FigureJ(-3, 8);
+                    return new FigureJ(-3, 4);
 
                 case 2:
-                    return new FigureL(-3, 8);
+                    return new FigureL(-3, 4);
 
                 case 3:
-                    return new FigureO(-3, 8);
+                    return new FigureO(-3, 4);
 
                 case 4:
-                    return new FigureS(-3, 8);
+                    return new FigureS(-3, 4);
 
                 case 5:
-                    return new FigureT(-3, 8);
+                    return new FigureT(-3, 4);
     
                 case 6:
-                    return new FigureZ(-3, 8);
+                    return new FigureZ(-3, 4);
 
                 case 7:
                     return new FigureI(-3, 8);
@@ -49,9 +49,40 @@ namespace ConsoleTetris
             }
         }
 
-        private Block GenerateNextBlock()
+        public void AddActiveBlock() // добавляет активную фигуру в стакан
         {
-            return GenerateRandomBlock();
+            for(int i = ActiveBlock.i; i - ActiveBlock.i < 4 && i < M; i++)
+            {
+                if (i < 0)
+                    continue;
+                for(int j = ActiveBlock.j; j - ActiveBlock.j < 4 && j < N; j++)
+                {
+                    if (j < 0)
+                        continue;
+                    if(ActiveBlock.BlockMatrix[i-ActiveBlock.i, j-ActiveBlock.j] == 1)
+                    {
+                        GameBoard[i, j] = ActiveBlock.BlockType;
+                    }
+                }
+            }
+        }
+
+        public void DeleteActiveBlock()
+        {
+            for (int i = ActiveBlock.i; i - ActiveBlock.i < 4 && i < M; i++)
+            {
+                if (i < 0)
+                    continue;
+                for (int j = ActiveBlock.j; j - ActiveBlock.j < 4 && j < N; j++)
+                {
+                    if (j < 0)
+                        continue;
+                    if (ActiveBlock.BlockMatrix[i - ActiveBlock.i, j - ActiveBlock.j] == 1)
+                    {
+                        GameBoard[i, j] = 0;
+                    }
+                }
+            }
         }
 
         public void EndMove() //выполняется после каждого завершения хода
@@ -61,10 +92,9 @@ namespace ConsoleTetris
 
         public State()
         {
-            // конструктор пустой 
+            ActiveBlock = GenerateRandomBlock();
+            NextBlock = GenerateRandomBlock();
+            AddActiveBlock();
         }
-
-        // здесь владимир напишет конструктор для поля :)
-
     }
 }
