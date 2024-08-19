@@ -28,52 +28,72 @@ namespace ConsoleTetris
         public void MoveToRight()
         {
             CurrentState.DeleteActiveBlock();
+
             Block block = CurrentState.ActiveBlock.Clone();
+
             block.MoveToRight();
+
             if (IsPossibleBlock(block))
             {
                 CurrentState.ActiveBlock = block;
             }
+
             CurrentState.AddActiveBlock();
+
             Print();
         }
 
         public void MoveToLeft()
         {
             CurrentState.DeleteActiveBlock();
+
             Block block = CurrentState.ActiveBlock.Clone();
+
             block.MoveToLeft();
+
             if (IsPossibleBlock(block))
             {
                 CurrentState.ActiveBlock = block;
             }
+
             CurrentState.AddActiveBlock();
+
             Print();
         }
 
         public void MoveToDown()
         {
             CurrentState.DeleteActiveBlock();
+
             Block block = CurrentState.ActiveBlock.Clone();
+
             block.MoveDown();
+
             if (IsPossibleBlock(block))
             {
                 CurrentState.ActiveBlock = block;
             }
+
             CurrentState.AddActiveBlock();
+
             Print();
         }
 
         public void Rotate()
         {
             CurrentState.DeleteActiveBlock();
+
             Block block = CurrentState.ActiveBlock.Clone();
+
             block.Rotate();
+
             if (IsPossibleBlock(block))
             {
                 CurrentState.ActiveBlock = block;
             }
+
             CurrentState.AddActiveBlock();
+
             Print();
         }
 
@@ -109,7 +129,5 @@ namespace ConsoleTetris
             // Устанавливаем курсор обратно в исходное положение
             Console.SetCursorPosition(0, cursorTop);
         }
-
-
     }
 }

@@ -13,7 +13,7 @@ namespace ConsoleTetris
             BlockType = 2;
 
             BlockMatrix = new int[4, 4]{
-            { 0, 1, 0, 0 },
+            { 0, 0, 0, 0 },
             { 0, 1, 0, 0 },
             { 0, 1, 0, 0 },
             { 0, 1, 1, 0 }

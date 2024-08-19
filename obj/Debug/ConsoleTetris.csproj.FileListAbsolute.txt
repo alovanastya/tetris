@@ -5,3 +5,10 @@ D:\Projects\Tetris\tetris\obj\Debug\ConsoleTetris.csprojAssemblyReference.cache
 D:\Projects\Tetris\tetris\obj\Debug\ConsoleTetris.csproj.CoreCompileInputs.cache
 D:\Projects\Tetris\tetris\obj\Debug\ConsoleTetris.exe
 D:\Projects\Tetris\tetris\obj\Debug\ConsoleTetris.pdb
+C:\Users\alova\source\repos\ConsoleTetris\bin\Debug\ConsoleTetris.exe.config
+C:\Users\alova\source\repos\ConsoleTetris\bin\Debug\ConsoleTetris.exe
+C:\Users\alova\source\repos\ConsoleTetris\bin\Debug\ConsoleTetris.pdb
+C:\Users\alova\source\repos\ConsoleTetris\obj\Debug\ConsoleTetris.csproj.AssemblyReference.cache
+C:\Users\alova\source\repos\ConsoleTetris\obj\Debug\ConsoleTetris.csproj.CoreCompileInputs.cache
+C:\Users\alova\source\repos\ConsoleTetris\obj\Debug\ConsoleTetris.exe
+C:\Users\alova\source\repos\ConsoleTetris\obj\Debug\ConsoleTetris.pdb
