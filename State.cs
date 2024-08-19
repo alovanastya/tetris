@@ -16,18 +16,51 @@ namespace ConsoleTetris
 
         public int[,] GameBoard = new int[M, N];
 
-        private void GenerateNextBlock()
+        private Block GenerateRandomBlock()  // создает и возввращает рандомную фигурку
         {
+            Random rnd = new Random();
 
+            int BlockTypeIndex = rnd.Next(1, 8);
+
+            switch (BlockTypeIndex)
+            {
+                case 1:
+                    return new FigureJ(-3, 8);
+
+                case 2:
+                    return new FigureL(-3, 8);
+
+                case 3:
+                    return new FigureO(-3, 8);
+
+                case 4:
+                    return new FigureS(-3, 8);
+
+                case 5:
+                    return new FigureT(-3, 8);
+    
+                case 6:
+                    return new FigureZ(-3, 8);
+
+                case 7:
+                    return new FigureI(-3, 8);
+
+                    default: return null;
+            }
+        }
+
+        private Block GenerateNextBlock()
+        {
+            return GenerateRandomBlock();
         }
 
         public void EndMove() //выполняется после каждого завершения хода
         {
-            
+
         }
 
-        public State() 
-        { 
+        public State()
+        {
             // конструктор пустой 
         }
 

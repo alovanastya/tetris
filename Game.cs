@@ -20,6 +20,13 @@ namespace ConsoleTetris
             _timer.Enabled = true;
         }
 
+        public bool isPossibleMove(Block block)
+        {
+
+
+            return false;
+        }
+
         public void MoveToRight()
         {
            
@@ -43,6 +50,7 @@ namespace ConsoleTetris
         public void Print() //напечатать игровое поле
         {
             Console.Clear();
+
             for(int i = 0; i < State.M; i++)
             {
                 for(int j = 0; j < State.N; j++)

@@ -35,9 +35,27 @@ namespace ConsoleTetris
             i++;
         }
 
-        public void Rotate()
+        public void Rotate() // на 90
         {
- 
+            int[,] matrix_2 = new int[4, 4];
+
+            // matrix_2 - перевернутая BlockMatrix
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    matrix_2[j, i]  = BlockMatrix[(4 - i - 1), j];
+                }
+            }
+
+            // поворот BlockMatrix
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    BlockMatrix[j, i] = matrix_2[j, i];
+                }
+            }
         }
     }
 }
