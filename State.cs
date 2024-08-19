@@ -8,17 +8,20 @@ namespace ConsoleTetris
 {
     class State
     {
-        Block nextBlock;
-        Block activeBlock;
+        public const int M = 20;
+        public const int N = 10;
 
-        int[,] gameBoard = new int[20, 10];
+        public Block NextBlock;
+        public Block AtiveBlock;
 
-        private void generateNextBlokc()
+        public int[,] GameBoard = new int[M, N];
+
+        private void GenerateNextBlock()
         {
 
         }
 
-        public void endMove() //выполняется после каждого завершения хода
+        public void EndMove() //выполняется после каждого завершения хода
         {
             
         }

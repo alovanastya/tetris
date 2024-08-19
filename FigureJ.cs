@@ -8,11 +8,11 @@ namespace ConsoleTetris
 {
     public class FigureJ : Block
     {
-        FigureJ()
+        public FigureJ(int i, int j): base(i, j)
         {
-            blockType = 1;
+            BlockType = 1;
 
-            blockMatrix = new int[4, 4]{
+            BlockMatrix = new int[4, 4]{
             { 0, 0, 0, 0 },
             { 0, 0, 1, 0 },
             { 0, 0, 1, 0 },

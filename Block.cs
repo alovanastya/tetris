@@ -8,36 +8,34 @@ namespace ConsoleTetris
 {
    public class Block
     {
-        Block(int i, int j)
+        public Block(int i, int j)
         {
             this.i = i;
             this.j = j;
         }
 
-        public Block() { }
-
-        public int blockType;
+        public int BlockType;
 
         public int i = 0;
         public int j = 0;
 
-        public int[,] blockMatrix = new int[4, 4];
+        public int[,] BlockMatrix = new int[4, 4];
 
-        public void moveToRight() 
+        public void MoveToRight() 
         {
             j++;
         }
-        public void moveToLeft()
+        public void MoveToLeft()
         {
             j--;
         }
 
-        public void moveDown()
+        public void MoveDown()
         {
             i++;
         }
 
-        public void rotate()
+        public void Rotate()
         {
  
         }

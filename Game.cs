@@ -3,31 +3,62 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace ConsoleTetris
 {
     class Game
     {
-        State currentState;
+        private Timer _timer;
+        State CurrentState = new State();
 
-        public void startGame()
+        public void StartGame()
         {
-
+            _timer = new Timer(1000); // интервал в 1 секунду
+            _timer.Elapsed += (sender, e) => MoveToDown();
+            _timer.AutoReset = true;
+            _timer.Enabled = true;
         }
 
-        public bool moveToRight()
+        public void MoveToRight()
         {
-            return true;
+           
         }
 
-        public bool moveToLeft()
+        public void MoveToLeft()
         {
-            return true;
+            
         }
 
-        public bool rotate()
+        public void MoveToDown()
         {
-            return true;
+            Print();
+        }
+
+        public void Rotate()
+        {
+            
+        }
+
+        public void Print() //напечатать игровое поле
+        {
+            Console.Clear();
+            for(int i = 0; i < State.M; i++)
+            {
+                for(int j = 0; j < State.N; j++)
+                {
+                    if(CurrentState.GameBoard[i, j] == 0)
+                    {
+                        Console.Write(0);
+                    }
+                    else
+                    {
+                        Console.Write("#");
+                    }
+                    Console.Write(" ");
+                }
+                Console.WriteLine();
+            }
         }
     }
 }

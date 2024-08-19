@@ -10,9 +10,9 @@ namespace ConsoleTetris
     {
         static void Main(string[] args)
         {
-            // -это сообщество помощи алкоголикам? 
-            // - да
-            // - помогите, на бутылку на хватает
+            Game game = new Game();
+            game.StartGame();
+            Console.ReadKey();
         }
     }
 }
