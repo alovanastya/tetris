@@ -51,17 +51,17 @@ namespace ConsoleTetris
 
         public void AddActiveBlock() // добавляет активную фигуру в стакан
         {
-            for(int i = ActiveBlock.i; i - ActiveBlock.i < 4 && i < M; i++)
+            for(int i = 0; i < 4 && ActiveBlock.i + i < M; i++)
             {
-                if (i < 0)
+                if (ActiveBlock.i + i < 0)
                     continue;
-                for(int j = ActiveBlock.j; j - ActiveBlock.j < 4 && j < N; j++)
+                for(int j = 0; j < 4 && ActiveBlock.j + j < N; j++)
                 {
-                    if (j < 0)
+                    if (ActiveBlock.j + j < 0)
                         continue;
-                    if(ActiveBlock.BlockMatrix[i-ActiveBlock.i, j-ActiveBlock.j] == 1)
+                    if(ActiveBlock.BlockMatrix[i, j] == 1)
                     {
-                        GameBoard[i, j] = ActiveBlock.BlockType;
+                        GameBoard[ActiveBlock.i + i, ActiveBlock.j + j] = ActiveBlock.BlockType;
                     }
                 }
             }
@@ -69,17 +69,17 @@ namespace ConsoleTetris
 
         public void DeleteActiveBlock()
         {
-            for (int i = ActiveBlock.i; i - ActiveBlock.i < 4 && i < M; i++)
+            for (int i = 0; i < 4 && ActiveBlock.i + i < M; i++)
             {
-                if (i < 0)
+                if (ActiveBlock.i + i < 0)
                     continue;
-                for (int j = ActiveBlock.j; j - ActiveBlock.j < 4 && j < N; j++)
+                for (int j = 0; j < 4 && ActiveBlock.j + j < N; j++)
                 {
-                    if (j < 0)
+                    if (ActiveBlock.j + j < 0)
                         continue;
-                    if (ActiveBlock.BlockMatrix[i - ActiveBlock.i, j - ActiveBlock.j] == 1)
+                    if (ActiveBlock.BlockMatrix[i, j] == 1)
                     {
-                        GameBoard[i, j] = 0;
+                        GameBoard[ActiveBlock.i + i, ActiveBlock.j + j] = 0;
                     }
                 }
             }
