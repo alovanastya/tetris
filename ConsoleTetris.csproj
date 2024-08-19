@@ -44,6 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Block.cs" />
+    <Compile Include="FigureZ.cs" />
+    <Compile Include="FigureT.cs" />
+    <Compile Include="FigureS.cs" />
+    <Compile Include="FigureO.cs" />
+    <Compile Include="FigureL.cs" />
+    <Compile Include="FigureI.cs" />
+    <Compile Include="FigureJ.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
