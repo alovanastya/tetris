@@ -11,6 +11,8 @@ namespace ConsoleTetris
         public const int M = 20;
         public const int N = 10;
 
+        int score = 0;
+
         public Block NextBlock;
         public Block ActiveBlock;
 
@@ -38,33 +40,34 @@ namespace ConsoleTetris
 
                 case 5:
                     return new FigureT(-3, 4);
-    
+
                 case 6:
                     return new FigureZ(-3, 4);
 
                 case 7:
                     return new FigureI(-3, 8);
 
-                    default: return null;
+                default: return null;
             }
         }
 
         public void AddActiveBlock() // добавляет активную фигуру в стакан
         {
-            for(int i = 0; i < 4 && ActiveBlock.i + i < M; i++)
+            for (int i = 0; i < 4 && ActiveBlock.i + i < M; i++)
             {
                 if (ActiveBlock.i + i < 0)
                     continue;
-                for(int j = 0; j < 4 && ActiveBlock.j + j < N; j++)
+                for (int j = 0; j < 4 && ActiveBlock.j + j < N; j++)
                 {
                     if (ActiveBlock.j + j < 0)
                         continue;
-                    if(ActiveBlock.BlockMatrix[i, j] == 1)
+                    if (ActiveBlock.BlockMatrix[i, j] == 1)
                     {
                         GameBoard[ActiveBlock.i + i, ActiveBlock.j + j] = ActiveBlock.BlockType;
                     }
                 }
             }
+
         }
 
         public void DeleteActiveBlock()
@@ -85,9 +88,44 @@ namespace ConsoleTetris
             }
         }
 
+
         public void EndMove() //выполняется после каждого завершения хода
         {
+            for (int j = 0; j < State.N; j++) // N = 10
+            {
+                if (GameBoard[0, j] != 0)
+                {
+                    Console.WriteLine("woof");
+                }
+                else
+                {
 
+                }
+            }
+
+            for (int i = 0; i < State.N; i++) // N = 10
+            {
+                bool flag = true;
+
+                for (int j = 0; j < State.M; j++)
+                {
+                    if (GameBoard[i, j] == 0) { 
+                        flag = false;  
+                        break; 
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+
+            ActiveBlock = NextBlock;
+            NextBlock = GenerateRandomBlock();
+            AddActiveBlock();
+
+
+            Console.WriteLine("meow");
         }
 
         public State()

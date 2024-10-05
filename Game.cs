@@ -12,9 +12,10 @@ namespace ConsoleTetris
         private Timer _timer;
         State CurrentState = new State();
 
+
         public void StartGame()
         {
-            _timer = new Timer(500);
+            _timer = new Timer(150);
             _timer.Elapsed += (sender, e) => MoveToDown();
             _timer.AutoReset = true;
             _timer.Enabled = true;
@@ -22,6 +23,30 @@ namespace ConsoleTetris
 
         public bool IsPossibleBlock(Block block)
         {
+
+            for(int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (i + block.i < 0) { continue; }
+                    if (i + block.i < State.M  && block.j < State.N && block.j >= 0 )
+                    {
+                   
+                        if (block.BlockMatrix[i, j] != 0 &&
+                            CurrentState.GameBoard[i + block.i, j + block.j] != 0)
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        if (block.BlockMatrix[i, j] != 0)
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
             return true;
         }
 
@@ -36,6 +61,7 @@ namespace ConsoleTetris
             if (IsPossibleBlock(block))
             {
                 CurrentState.ActiveBlock = block;
+
             }
 
             CurrentState.AddActiveBlock();
@@ -72,9 +98,13 @@ namespace ConsoleTetris
             if (IsPossibleBlock(block))
             {
                 CurrentState.ActiveBlock = block;
+                CurrentState.AddActiveBlock();
             }
-
-            CurrentState.AddActiveBlock();
+            else
+            {
+                CurrentState.AddActiveBlock();
+                CurrentState.EndMove();
+            }
 
             Print();
         }
