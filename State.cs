@@ -11,7 +11,7 @@ namespace ConsoleTetris
         public const int M = 20;
         public const int N = 10;
 
-        int score = 0;
+        public int score = 0;  // очки 
 
         public Block NextBlock;
         public Block ActiveBlock;
@@ -95,7 +95,7 @@ namespace ConsoleTetris
             {
                 if (GameBoard[0, j] != 0)
                 {
-                    Console.WriteLine("woof");
+                    //Console.WriteLine("woof");   // окончание игры
                 }
                 else
                 {
@@ -103,29 +103,50 @@ namespace ConsoleTetris
                 }
             }
 
-            for (int i = 0; i < State.N; i++) // N = 10
-            {
-                bool flag = true;
 
-                for (int j = 0; j < State.M; j++)
+
+            // удаление строки
+            for (int i = 0; i < State.M; i++) // N = 10
+            {
+                bool full_string = true; // строка заполнена 
+
+                for (int j = 0; j < State.N; j++)
                 {
-                    if (GameBoard[i, j] == 0) { 
-                        flag = false;  
-                        break; 
+                    if (GameBoard[i, j] == 0)
+                    {
+                        full_string = false;
+                        break;
                     }
+
                     else
                     {
                         continue;
                     }
                 }
+
+                if (full_string)
+                {
+                    score += 100;
+                    for (int k = i-1; k >=0; k--)
+                    {
+                        for (int j = 0; j < State.N; j++)
+                        {
+                            GameBoard[k + 1, j] = GameBoard[k, j];
+                            // GameBoard[k, j] = 0;
+                        }
+                    }
+                }
+
             }
+
+
 
             ActiveBlock = NextBlock;
             NextBlock = GenerateRandomBlock();
             AddActiveBlock();
 
 
-            Console.WriteLine("meow");
+            //Console.WriteLine("meow");
         }
 
         public State()

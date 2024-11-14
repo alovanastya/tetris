@@ -15,7 +15,7 @@ namespace ConsoleTetris
 
         public void StartGame()
         {
-            _timer = new Timer(150);
+            _timer = new Timer(500);
             _timer.Elapsed += (sender, e) => MoveToDown();
             _timer.AutoReset = true;
             _timer.Enabled = true;
@@ -29,7 +29,7 @@ namespace ConsoleTetris
                 for (int j = 0; j < 4; j++)
                 {
                     if (i + block.i < 0) { continue; }
-                    if (i + block.i < State.M  && block.j < State.N && block.j >= 0 )
+                    if (i + block.i < State.M  && j + block.j < State.N && j + block.j >= 0 )
                     {
                    
                         if (block.BlockMatrix[i, j] != 0 &&
@@ -133,6 +133,9 @@ namespace ConsoleTetris
 
             // Сохраняем текущую позицию курсора
             int cursorTop = Console.CursorTop;
+
+            Console.SetCursorPosition(30, 5);
+            Console.WriteLine("Score: " + CurrentState.score.ToString());
 
             // Устанавливаем курсор в начало
             Console.SetCursorPosition(0, 0);
